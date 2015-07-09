@@ -3,7 +3,10 @@ package main
 import (
 	"encoding/json"
 	"log"
+	"os"
+	"os/signal"
 	"sync"
+	"syscall"
 
 	"github.com/bitly/go-nsq"
 )
@@ -15,10 +18,10 @@ var (
 )
 
 type RedirectMessage struct {
-	Url        string `json:"url"`
-	Timestamp  int    `json:"ts"`
-	UserAgent  string `json:"ua"`
-	IPAddr     string `json:"ip"`
+	Url       string `json:"url"`
+	Timestamp int    `json:"ts"`
+	UserAgent string `json:"ua"`
+	IPAddr    string `json:"ip"`
 }
 
 func MessageHandler(message *nsq.Message) error {
@@ -39,9 +42,6 @@ func MessageHandler(message *nsq.Message) error {
 }
 
 func main() {
-	wg := &sync.WaitGroup{}
-	wg.Add(1)
-
 	config := nsq.NewConfig()
 	consumer, err := nsq.NewConsumer(topic, channel, config)
 	if err != nil {
@@ -54,5 +54,17 @@ func main() {
 	if err != nil {
 		log.Panic("Could not connect")
 	}
+
+	sigChan := make(chan os.Signal, 1)
+	signal.Notify(sigChan, syscall.SIGINT, syscall.SIGTERM)
+
+	wg := &sync.WaitGroup{}
+	wg.Add(1)
+	go func() {
+		<-sigChan
+		consumer.Stop()
+		<-consumer.StopChan
+		wg.Done()
+	}()
 	wg.Wait()
 }
