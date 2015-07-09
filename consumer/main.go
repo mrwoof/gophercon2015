@@ -12,7 +12,7 @@ import (
 )
 
 var (
-	nsqlookupds = []string{"127.0.0.1:4161"}
+	nsqlookupd  = "127.0.0.1:4161"
 	topic       = "test"
 	channel     = "my_consumer_channel"
 )
@@ -50,7 +50,7 @@ func main() {
 
 	consumer.AddHandler(nsq.HandlerFunc(MessageHandler))
 
-	err = consumer.ConnectToNSQLookupds(nsqlookupds)
+	err = consumer.ConnectToNSQLookupd(nsqlookupd)
 	if err != nil {
 		log.Panic("Could not connect")
 	}
