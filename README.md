@@ -22,7 +22,7 @@ In another shell, start nsqd:
 
 `$ curl -d "hello world 1" "http://127.0.0.1:4151/put?topic=test"`
 
-### 5. Now what?
+### 5. Now what? What is happening?
 
 We have two daemons running. What are they doing?
 
@@ -30,4 +30,11 @@ We have two daemons running. What are they doing?
 
 `$ nsqadmin --lookupd-http-address=127.0.0.1:4161`
 
-Now you can launch the NSQ Admin UI in a borwser: http://127.0.0.1:4171/
+Now you can load the NSQ Admin UI in a borwser: http://127.0.0.1:4171/
+
+### 7. Writing a consumer
+
+First get the client library for import:
+
+`$ go get -u -v github.com/bitly/go-nsq`
+
