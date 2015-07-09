@@ -23,3 +23,11 @@ In another shell, start nsqd:
 `$ curl -d "hello world 1" "http://127.0.0.1:4151/put?topic=test"`
 
 ### 5. Now what?
+
+We have two daemons running. What are they doing?
+
+### 6. Launch nsqadmin
+
+`$ nsqadmin --lookupd-http-address=127.0.0.1:4161`
+
+Now you can launch the NSQ Admin UI in a borwser: http://127.0.0.1:4171/
