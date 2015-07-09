@@ -2,6 +2,10 @@
 
 ### 1. Install NSQ locally
 
+http://nsq.io/deployment/installing.html
+
+` $ brew install nsq`
+
 ### 2. Launch nsqlookupd
 
 ### 3. Launch nsq
