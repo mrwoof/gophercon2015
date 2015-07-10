@@ -12,7 +12,7 @@ In one shell, start nsqlookupd:
 
 `$ nsqlookupd`
 
-### 3. Launch nsq
+### 3. Launch nsqd
 
 In another shell, start nsqd:
 
@@ -37,4 +37,5 @@ Now you can load the NSQ Admin UI in a borwser: http://127.0.0.1:4171/
 First get the client library for import:
 
 `$ go get -u -v github.com/bitly/go-nsq`
+
 
