@@ -10,7 +10,8 @@ import (
 
 func redirect(w http.ResponseWriter, r *http.Request) {
 	r.ParseForm() // parse arguments, you have to call this by yourself
-	fmt.Fprintf(w, "I would redirect you to \"%s\" if I were so inclined", r.Form["url"])
+	url := r.Form["url"][0]
+	fmt.Fprintf(w, "I would redirect you to \"%s\" if I were so inclined", url)
 }
 
 func main() {

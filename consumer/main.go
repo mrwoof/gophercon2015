@@ -31,7 +31,7 @@ func MessageHandler(message *nsq.Message) error {
 	err := json.Unmarshal(message.Body, &redirMsg)
 	if err != nil {
 		log.Printf("Unable to decode json, skipping '%s'", message.Body)
-		return nil
+		return err
 	}
 
 	log.Printf("Got a good message: %#v", redirMsg)
