@@ -38,10 +38,10 @@ First get the client library for import:
 
 `$ go get -u -v github.com/bitly/go-nsq`
 
-- Example NSQ producer: [producer_web_server]
-- Example NSQ consumer: [consumer]
+- [Example NSQ producer](producer_web_server)
+- [Example NSQ consumer](consumer)
 
-### 8. nsq_tail
+### 8. Using nsq_tail to inspect a topic
 
-`$ nsq_tail --topic=test2 --lookupd-http-address=127.0.0.1:4161`
+`$ nsq_tail --topic=test --lookupd-http-address=127.0.0.1:4161`
 
