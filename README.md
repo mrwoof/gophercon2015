@@ -32,11 +32,14 @@ We have two daemons running. What are they doing?
 
 Now you can load the NSQ Admin UI in a borwser: http://127.0.0.1:4171/
 
-### 7. Writing a consumer
+### 7. Writing a producer & consumer
 
 First get the client library for import:
 
 `$ go get -u -v github.com/bitly/go-nsq`
+
+- Example NSQ producer: [producer_web_server]
+- Example NSQ consumer: [consumer]
 
 ### 8. nsq_tail
 
