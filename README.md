@@ -38,4 +38,7 @@ First get the client library for import:
 
 `$ go get -u -v github.com/bitly/go-nsq`
 
+### 8. nsq_tail
+
+`$ nsq_tail --topic=test2 --lookupd-http-address=127.0.0.1:4161`
 
